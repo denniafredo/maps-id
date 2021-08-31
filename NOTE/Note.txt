@@ -1,0 +1,42 @@
+/**
+ * Move Models to folder (Laravel 5.6 ++)
+ * Source: https://stackoverflow.com/questions/29052267/move-laravel-5-eloquent-models-into-its-own-directory
+ */
+
+1. Move the files to the new directory
+   Say you want to move the models to app/Models
+
+2. Change the namespace of the models
+   For each model change :
+
+   namespace App;
+   to
+
+   namespace App\Models;
+
+3. Change the references in other files
+   Check these files and search especially app\User
+
+   app/Http/Controllers/Auth/RegisterController.php
+   config/auth.php
+   config/services.php
+   database/factories/UserFactory.php
+   Your Controllers
+   And change App/ModelExample to App/Models/ModelExample
+
+4. Autoload files
+   Run composer dump-autoload
+
+   *Note: better to run 'php artisan config:cache' too
+
+5. Congratulations!
+
+/**
+ * Create syslink public -> storage
+ * Source: https://laravel.com/docs/5.6/filesystem#the-public-disk
+ */
+1. Run command "php artisan storage:link"
+Expected output: The [public/storage] directory has been linked.
+
+2. So you can storage anything in storage
+* public/storage -> storage/app/public
